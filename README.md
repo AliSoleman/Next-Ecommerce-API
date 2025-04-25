@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project
 
 ## Getting Started
 
@@ -16,21 +16,62 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# E-Commerce API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A RESTful API for an e-commerce platform built with Next.js and PostgreSQL.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- User authentication and authorization
+- Product catalog management
+- Order processing
+- User order history
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database Schema
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tables
 
-## Deploy on Vercel
+1. **Users**
+   - Stores user information including name, email, password, and role
+   - Roles: 'customer' (default) or 'admin'
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Categories**
+   - Product categories
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Products**
+   - Product information including price, stock, and category
+
+4. **Orders**
+   - Order headers with total price and status
+   - Statuses: 'pending' (default), 'completed', 'cancelled'
+
+5. **Order_Items**
+   - Individual items within an order
+   - Stores price at time of purchase (unit_price)
+   - Automatically calculates subtotal (quantity × unit_price)
+
+## API Endpoints
+
+### Orders
+
+#### Create an Order
+`POST /api/[user_id]/orders`
+
+**Request Body:**
+```json
+{
+  "items": [
+    {
+      "productId": 1,
+      "quantity": 2
+    },
+    {
+      "productId": 3,
+      "quantity": 1
+    }
+  ]
+}
+
+
+
+
