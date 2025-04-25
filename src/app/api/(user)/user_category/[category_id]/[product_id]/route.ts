@@ -4,9 +4,9 @@ import db from '@/app/lib/db'
 export async function GET(req: NextRequest) {
     try {
         const { pathname } = new URL(req.url);
-        const p = pathname.split('/');
-        const product_id = p.pop();
-        const category_id = p.pop();
+        const pathSegments = pathname.split('/');
+        const product_id = pathSegments.pop();
+        const category_id = pathSegments.pop();
         const isExistCategory = await db.query('SELECT * FROM Categories WHERE id = $1', [category_id]);
         if (isExistCategory.rows.length === 0) {
             return NextResponse.json({ message: "Invalid category_id" }, { status: 404 });
