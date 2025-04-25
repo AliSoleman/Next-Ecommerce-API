@@ -22,56 +22,22 @@ A RESTful API for an e-commerce platform built with Next.js and PostgreSQL.
 
 ## Features
 
-- User authentication and authorization
-- Product catalog management
-- Order processing
-- User order history
+- ✅ User authentication and authorization  
+- 🛍️ Product catalog management  
+- 📦 Order processing system  
+- 📊 User order history  
 
 ## Database Schema
 
-### Tables
+### Tables Structure
 
-1. **Users**
-   - Stores user information including name, email, password, and role
-   - Roles: 'customer' (default) or 'admin'
-
-2. **Categories**
-   - Product categories
-
-3. **Products**
-   - Product information including price, stock, and category
-
-4. **Orders**
-   - Order headers with total price and status
-   - Statuses: 'pending' (default), 'completed', 'cancelled'
-
-5. **Order_Items**
-   - Individual items within an order
-   - Stores price at time of purchase (unit_price)
-   - Automatically calculates subtotal (quantity × unit_price)
-
-## API Endpoints
-
-### Orders
-
-#### Create an Order
-`POST /api/[user_id]/orders`
-
-**Request Body:**
-```json
-{
-  "items": [
-    {
-      "productId": 1,
-      "quantity": 2
-    },
-    {
-      "productId": 3,
-      "quantity": 1
-    }
-  ]
-}
-
+| Table        | Description |
+|--------------|-------------|
+| **Users**    | Stores user credentials and roles (customer/admin) |
+| **Categories** | Product classification |
+| **Products** | Items with price, stock, and category |
+| **Orders**   | Customer purchases with status tracking |
+| **Order_Items** | Individual ordered products with price snapshots |
 
 
 
